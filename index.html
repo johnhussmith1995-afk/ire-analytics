@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRE • Global Financial Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --primary: #0A2540;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .logo-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.95) 0%, rgba(10, 37, 64, 0.85) 100%);
+        }
+
+        .swiper-slide {
+            position: relative;
+        }
+        
+        .swiper-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(10, 37, 64, 0.7) 80%);
+        }
+
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover {
+            color: #3B82F6;
+            transform: translateY(-2px);
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #60A5FA;
+            transform: translateX(8px);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <!-- LOGO -->
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center">
+                    <span class="text-white font-bold text-2xl logo-font tracking-tighter">I</span>
+                </div>
+                <div>
+                    <span class="text-3xl font-bold logo-font tracking-tighter text-white">IRE</span>
+                    <span class="text-[10px] font-mono text-blue-400 tracking-[3px] block -mt-1">ANALYTICS</span>
+                </div>
+            </div>
+            
+            <!-- DESKTOP MENU -->
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#services" onclick="smoothScrollTo('services')" class="nav-link text-zinc-400 hover:text-white">Services</a>
+                <a href="#about" onclick="smoothScrollTo('about')" class="nav-link text-zinc-400 hover:text-white">About</a>
+                <a href="#expertise" onclick="smoothScrollTo('expertise')" class="nav-link text-zinc-400 hover:text-white">Expertise</a>
+                <a href="#global" onclick="smoothScrollTo('global')" class="nav-link text-zinc-400 hover:text-white">Global Reach</a>
+                <a href="#contact" onclick="smoothScrollTo('contact')" class="nav-link text-zinc-400 hover:text-white">Contact</a>
+            </div>
+            
+            <!-- CTA -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contact" onclick="smoothScrollTo('contact')" 
+                   class="px-8 py-3 bg-white text-zinc-950 font-semibold rounded-2xl hover:bg-blue-500 hover:text-white transition-all flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    START A PROJECT
+                </a>
+            </div>
+            
+            <!-- MOBILE MENU BUTTON -->
+            <button id="mobile-menu-button"
+                    class="md:hidden w-10 h-10 flex items-center justify-center text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-white/10">
+            <div class="flex flex-col px-6 py-8 gap-6 text-lg font-medium">
+                <a href="#services" onclick="toggleMobileMenu()" class="nav-link">Services</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="nav-link">About</a>
+                <a href="#expertise" onclick="toggleMobileMenu()" class="nav-link">Expertise</a>
+                <a href="#global" onclick="toggleMobileMenu()" class="nav-link">Global Reach</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="nav-link">Contact</a>
+                <div class="pt-6 border-t border-white/10">
+                    <a href="#contact" onclick="toggleMobileMenu()" 
+                       class="block w-full py-4 bg-white text-zinc-950 font-semibold rounded-2xl text-center">
+                        START A PROJECT
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SLIDER -->
+    <section class="relative h-screen">
+        <div class="swiper hero-swiper h-full">
+            <div class="swiper-wrapper">
+                <!-- SLIDE 1 -->
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&h=1080&fit=crop" 
+                         alt="Global finance" 
+                         class="absolute inset-0 w-full h-full object-cover">
+                    <div class="hero-bg absolute inset-0 flex items-center">
+                        <div class="max-w-4xl mx-auto px-6 text-center">
+                            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl mb-8">
+                                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                                <span class="text-emerald-400 text-xs font-mono tracking-widest">24/7 MONITORING</span>
+                            </div>
+                            <h1 class="text-6xl md:text-7xl font-bold leading-none mb-6 logo-font tracking-tighter">
+                                IRE<br>FINANCIAL<br>ANALYTICS
+                            </h1>
+                            <p class="text-xl md:text-2xl text-zinc-400 max-w-2xl mx-auto mb-12">
+                                Leading provider of credit & financial risk analytics worldwide.<br>
+                                Data-driven insights that shape tomorrow’s decisions.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a href="#services" onclick="smoothScrollTo('services')"
+                                   class="px-10 py-4 bg-blue-600 hover:bg-blue-700 font-semibold rounded-2xl transition-all flex items-center justify-center gap-3 text-lg">
+                                    OUR SERVICES
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                </a>
+                                <a href="#contact" onclick="smoothScrollTo('contact')"
+                                   class="px-10 py-4 border border-white/30 hover:border-white/70 font-semibold rounded-2xl transition-all flex items-center justify-center gap-3 text-lg">
+                                    GET IN TOUCH
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SLIDE 2 -->
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920&h=1080&fit=crop" 
+                         alt="Credit risk modeling" 
+                         class="absolute inset-0 w-full h-full object-cover">
+                    <div class="hero-bg absolute inset-0 flex items-center">
+                        <div class="max-w-4xl mx-auto px-6 text-center">
+                            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl mb-8">
+                                <span class="text-amber-400 text-xs font-mono tracking-widest">AI + BIG DATA</span>
+                            </div>
+                            <h1 class="text-6xl md:text-7xl font-bold leading-none mb-6 logo-font tracking-tighter">
+                                98% ACCURATE<br>RISK FORECASTING
+                            </h1>
+                            <p class="text-xl md:text-2xl text-zinc-400 max-w-2xl mx-auto mb-12">
+                                Advanced machine learning models for credit portfolios, pricing and liquidity management.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a href="#expertise" onclick="smoothScrollTo('expertise')"
+                                   class="px-10 py-4 bg-white text-zinc-950 hover:bg-amber-400 font-semibold rounded-2xl transition-all flex items-center justify-center gap-3 text-lg">
+                                    LEARN MORE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SLIDE 3 -->
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&h=1080&fit=crop" 
+                         alt="Worldwide coverage" 
+                         class="absolute inset-0 w-full h-full object-cover">
+                    <div class="hero-bg absolute inset-0 flex items-center">
+                        <div class="max-w-4xl mx-auto px-6 text-center">
+                            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl mb-8">
+                                <span class="text-sky-400 text-xs font-mono tracking-widest">47 JURISDICTIONS</span>
+                            </div>
+                            <h1 class="text-6xl md:text-7xl font-bold leading-none mb-6 logo-font tracking-tighter">
+                                FROM TOKYO<br>TO NEW YORK
+                            </h1>
+                            <p class="text-xl md:text-2xl text-zinc-400 max-w-2xl mx-auto mb-12">
+                                Local expertise. Global coverage. Analytics tailored to every major regulatory framework.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a href="#global" onclick="smoothScrollTo('global')"
+                                   class="px-10 py-4 border-2 border-white/50 hover:border-white font-semibold rounded-2xl transition-all flex items-center justify-center gap-3 text-lg">
+                                    OUR GLOBAL FOOTPRINT
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SWIPER NAV -->
+            <div class="swiper-pagination !bottom-12"></div>
+            
+            <!-- CUSTOM CONTROLS -->
+            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                <button onclick="swiper.slidePrev()" 
+                        class="w-12 h-12 rounded-2xl border border-white/30 flex items-center justify-center hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button onclick="swiper.slideNext()" 
+                        class="w-12 h-12 rounded-2xl border border-white/30 flex items-center justify-center hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="bg-zinc-900 py-6 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap items-center justify-center gap-x-16 gap-y-8 opacity-60">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Bloomberg.svg/2560px-Bloomberg.svg.png" 
+                     alt="Bloomberg" class="h-6 grayscale">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Reuters.svg/2560px-Reuters.svg.png" 
+                     alt="Reuters" class="h-6 grayscale">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Financial_Times.svg/2560px-Financial_Times.svg.png" 
+                     alt="FT" class="h-6 grayscale">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/World_Bank_logo.svg/2560px-World_Bank_logo.svg.png" 
+                     alt="World Bank" class="h-6 grayscale">
+                <div class="text-xs font-mono text-zinc-500 tracking-widest">+120 INSTITUTIONS</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 bg-blue-950 text-blue-400 text-xs font-mono tracking-[2px] px-6 py-3 rounded-3xl">
+                    <i class="fa-solid fa-chart-line"></i>
+                    WHAT WE DO
+                </div>
+                <h2 class="text-5xl font-bold mt-6 logo-font tracking-tighter">Financial Analytics Services</h2>
+                <p class="text-zinc-400 mt-4 max-w-md mx-auto">Comprehensive solutions for banks, funds and corporates worldwide</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card group bg-zinc-900 rounded-3xl p-8 border border-white/5 hover:border-blue-500/30">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-500/20 transition-colors">
+                        <i class="fa-solid fa-shield-halved text-3xl text-blue-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Credit Risk Analytics</h3>
+                    <p class="text-zinc-400 leading-relaxed">Portfolio assessment, default forecasting, stress testing under Basel IV / CECL / IFRS 9 frameworks.</p>
+                    <div class="mt-8 pt-8 border-t border-white/10 text-sm text-blue-400 flex items-center gap-2">
+                        <span class="font-mono">98%</span>
+                        <span class="text-zinc-500">forecast accuracy</span>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card group bg-zinc-900 rounded-3xl p-8 border border-white/5 hover:border-emerald-500/30">
+                    <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-emerald-500/20 transition-colors">
+                        <i class="fa-solid fa-brain text-3xl text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">AI & Predictive Modeling</h3>
+                    <p class="text-zinc-400 leading-relaxed">Neural networks for credit scoring, pricing optimization and liquidity forecasting.</p>
+                    <div class="mt-8 pt-8 border-t border-white/10 text-sm text-emerald-400 flex items-center gap-2">
+                        <span class="font-mono">+42%</span>
+                        <span class="text-zinc-500">average ROI lift</span>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card group bg-zinc-900 rounded-3xl p-8 border border-white/5 hover:border-purple-500/30">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-purple-500/20 transition-colors">
+                        <i class="fa-solid fa-globe text-3xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Global Regulatory Compliance</h3>
+                    <p class="text-zinc-400 leading-relaxed">US, EU, APAC frameworks. Automated sanctions, AML and KYC monitoring.</p>
+                    <div class="mt-8 pt-8 border-t border-white/10 text-sm text-purple-400 flex items-center gap-2">
+                        <span class="font-mono">47</span>
+                        <span class="text-zinc-500">jurisdictions covered</span>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card group bg-zinc-900 rounded-3xl p-8 border border-white/5 hover:border-amber-500/30">
+                    <div class="w-14 h-14 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-amber-500/20 transition-colors">
+                        <i class="fa-solid fa-chart-pie text-3xl text-amber-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Investment & Portfolio Analytics</h3>
+                    <p class="text-zinc-400 leading-relaxed">Strategic allocation, ESG risk assessment, portfolio optimization.</p>
+                    <div class="mt-8 pt-8 border-t border-white/10 text-sm text-amber-400 flex items-center gap-2">
+                        <span class="font-mono">12.4%</span>
+                        <span class="text-zinc-500">average outperformance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- LEFT -->
+                <div>
+                    <div class="sticky top-24">
+                        <div class="inline-block bg-gradient-to-r from-blue-500 to-cyan-400 text-zinc-950 text-xs font-bold px-5 py-2.5 rounded-3xl mb-6">
+                            EST. 2012
+                        </div>
+                        <h2 class="text-6xl leading-none font-bold logo-font tracking-tighter mb-8">
+                            Turning data into<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">alpha</span>
+                        </h2>
+                        <div class="flex items-center gap-8 text-sm">
+                            <div>
+                                <div class="text-4xl font-bold text-blue-400">87</div>
+                                <div class="text-zinc-400">experts</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-emerald-400">240+</div>
+                                <div class="text-zinc-400">projects</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-amber-400">19</div>
+                                <div class="text-zinc-400">countries</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RIGHT -->
+                <div class="space-y-10">
+                    <div class="bg-zinc-800/50 backdrop-blur-xl border border-white/10 rounded-3xl p-10">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
+                                    <i class="fa-solid fa-users text-2xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-xl mb-3">World-class team</h4>
+                                <p class="text-zinc-400">Former Goldman Sachs, JPMorgan, Fed & ECB analysts. PhDs from MIT, Stanford, Wharton.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-zinc-800/50 backdrop-blur-xl border border-white/10 rounded-3xl p-10">
+                        <div class="flex gap-6">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
+                                    <i class="fa-solid fa-award text-2xl"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-xl mb-3">Industry recognition</h4>
+                                <p class="text-zinc-400">Risk.net “Best Analytics Firm” 2024. 7× Global Finance “Best Risk Analytics Provider”.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-8">
+                        <a href="#contact" onclick="smoothScrollTo('contact')" 
+                           class="inline-flex items-center gap-4 group">
+                            <div class="text-sm uppercase tracking-widest font-mono text-blue-400">MEET THE TEAM</div>
+                            <div class="w-12 h-px bg-gradient-to-r from-blue-400 to-transparent group-hover:w-24 transition-all"></div>
+                            <i class="fa-solid fa-arrow-right text-blue-400 text-xl group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise" class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 items-end mb-16">
+                <div class="flex-1">
+                    <div class="text-blue-400 text-sm font-mono tracking-widest mb-3">OUR EDGE</div>
+                    <h2 class="text-5xl font-bold logo-font tracking-tighter">Technology ahead of the curve</h2>
+                </div>
+                <div class="flex-1 text-zinc-400 text-lg leading-relaxed max-w-md">
+                    We combine deep domain knowledge with cutting-edge tools: quantum-inspired algorithms, satellite data feeds, DeFi monitoring.
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group bg-zinc-900 p-8 rounded-3xl hover:ring-1 hover:ring-blue-400/30 transition-all">
+                    <div class="h-2 w-16 bg-gradient-to-r from-blue-400 to-cyan-400 rounded mb-8"></div>
+                    <h3 class="text-3xl font-semibold mb-4">Quantum Risk Engine</h3>
+                    <p class="text-zinc-400">Quantum-enhanced Monte Carlo simulations — 1000× faster than classical methods.</p>
+                    <div class="mt-12 text-[10px] font-mono text-blue-400/70">Live in 9 major banks</div>
+                </div>
+                
+                <div class="group bg-zinc-900 p-8 rounded-3xl hover:ring-1 hover:ring-emerald-400/30 transition-all">
+                    <div class="h-2 w-16 bg-gradient-to-r from-emerald-400 to-teal-400 rounded mb-8"></div>
+                    <h3 class="text-3xl font-semibold mb-4">Satellite + Alternative Data</h3>
+                    <p class="text-zinc-400">Real-time economic signals extracted from satellite imagery and geospatial AI.</p>
+                    <div class="mt-12 text-[10px] font-mono text-emerald-400/70">Coverage: 184 countries</div>
+                </div>
+                
+                <div class="group bg-zinc-900 p-8 rounded-3xl hover:ring-1 hover:ring-purple-400/30 transition-all">
+                    <div class="h-2 w-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded mb-8"></div>
+                    <h3 class="text-3xl font-semibold mb-4">DeFi & Crypto Intelligence</h3>
+                    <p class="text-zinc-400">On-chain analytics, exploit detection, wallet clustering and risk scoring.</p>
+                    <div class="mt-12 text-[10px] font-mono text-purple-400/70">$4.2T monitored</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLOBAL -->
+    <section id="global" class="py-24 bg-zinc-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-5">
+                    <div class="text-emerald-400 uppercase text-xs tracking-[3px] font-mono mb-4">GLOBAL PRESENCE</div>
+                    <h2 class="text-6xl font-bold logo-font tracking-[-1px] leading-none mb-8">On the ground<br>everywhere that matters</h2>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-6">
+                            <div class="w-px h-12 bg-gradient-to-b from-transparent via-emerald-400 to-transparent"></div>
+                            <div>
+                                <div class="font-semibold">AMERICAS • EMEA • APAC</div>
+                                <div class="text-sm text-zinc-400 mt-1">Offices in 14 cities. 240+ institutional partners.</div>
+                            </div>
+                        </div>
+                        <div class="pl-7">
+                            <div class="grid grid-cols-4 gap-4 text-center text-xs">
+                                <div class="bg-zinc-800 rounded-2xl py-3">🇺🇸 New York</div>
+                                <div class="bg-zinc-800 rounded-2xl py-3">🇬🇧 London</div>
+                                <div class="bg-zinc-800 rounded-2xl py-3">🇯🇵 Tokyo</div>
+                                <div class="bg-zinc-800 rounded-2xl py-3">🇸🇬 Singapore</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- MAP -->
+                <div class="lg:col-span-7 relative">
+                    <div class="aspect-video bg-zinc-950 rounded-[2.75rem] overflow-hidden border border-white/10 relative">
+                        <img src="https://picsum.photos/id/1015/1200/600" 
+                             alt="World map" 
+                             class="w-full h-full object-cover opacity-30">
+                        <!-- Animated dots -->
+                        <div class="absolute top-[35%] left-[28%] w-4 h-4 bg-emerald-400 rounded-full animate-ping"></div>
+                        <div class="absolute top-[35%] left-[28%] w-4 h-4 bg-emerald-400 rounded-full"></div>
+                        
+                        <div class="absolute top-[42%] left-[62%] w-4 h-4 bg-blue-400 rounded-full animate-ping"></div>
+                        <div class="absolute top-[42%] left-[62%] w-4 h-4 bg-blue-400 rounded-full"></div>
+                        
+                        <div class="absolute bottom-[28%] right-[22%] w-4 h-4 bg-amber-400 rounded-full animate-ping"></div>
+                        <div class="absolute bottom-[28%] right-[22%] w-4 h-4 bg-amber-400 rounded-full"></div>
+                    </div>
+                    
+                    <!-- Stats overlay -->
+                    <div class="absolute -bottom-6 -right-6 bg-zinc-900 border border-white/10 rounded-3xl p-8 max-w-[260px]">
+                        <div class="text-5xl font-bold text-emerald-400 mb-1 stat-number" id="clients">247</div>
+                        <div class="uppercase text-xs tracking-widest text-zinc-400">institutional clients</div>
+                        <div class="h-px bg-white/10 my-6"></div>
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <div class="font-mono text-emerald-400">+19%</div>
+                                <div class="text-zinc-400">YoY growth 2025</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-mono text-emerald-400">4.8</div>
+                                <div class="text-zinc-400">average NPS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <div class="bg-gradient-to-r from-blue-600 to-cyan-500 py-16">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="text-4xl font-semibold mb-4">Ready to transform your risk & analytics capability?</h3>
+            <p class="text-blue-100 text-lg mb-10 max-w-md mx-auto">Talk to our team. First diagnostic review is on us.</p>
+            <a href="#contact" onclick="smoothScrollTo('contact')" 
+               class="inline-block px-16 py-6 bg-white text-zinc-950 font-bold text-xl rounded-3xl hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-blue-500/50">
+                REQUEST A CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20">
+                <!-- FORM -->
+                <div>
+                    <h2 class="text-5xl font-bold logo-font tracking-tighter mb-3">Let’s talk</h2>
+                    <p class="text-zinc-400 mb-10">Fill out the form and a senior analyst will reach out within 24 hours.</p>
+                    
+                    <form id="contact-form" class="space-y-8" onsubmit="handleSubmit(event)">
+                        <div class="grid grid-cols-2 gap-8">
+                            <div>
+                                <label class="block text-xs font-mono text-zinc-500 mb-2">NAME</label>
+                                <input type="text" id="name" required
+                                       class="w-full bg-transparent border-b border-white/20 focus:border-blue-400 outline-none pb-4 text-lg placeholder-zinc-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-zinc-500 mb-2">COMPANY</label>
+                                <input type="text" id="company" required
+                                       class="w-full bg-transparent border-b border-white/20 focus:border-blue-400 outline-none pb-4 text-lg placeholder-zinc-500">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-mono text-zinc-500 mb-2">EMAIL</label>
+                            <input type="email" id="email" required
+                                   class="w-full bg-transparent border-b border-white/20 focus:border-blue-400 outline-none pb-4 text-lg placeholder-zinc-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-mono text-zinc-500 mb-2">MESSAGE</label>
+                            <textarea id="message" rows="4" required
+                                      class="w-full bg-transparent border-b border-white/20 focus:border-blue-400 outline-none pb-4 text-lg placeholder-zinc-500 resize-y"></textarea>
+                        </div>
+                        
+                        <button type="submit"
+                                class="w-full py-6 bg-white text-zinc-950 font-semibold rounded-3xl hover:bg-blue-500 hover:text-white transition-all text-lg flex items-center justify-center gap-3">
+                            SEND REQUEST
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- INFO -->
+                <div class="space-y-16">
+                    <div>
+                        <div class="uppercase text-xs font-mono tracking-widest text-zinc-500 mb-4">HEADQUARTERS</div>
+                        <div class="text-2xl">New York, NY</div>
+                        <div class="text-zinc-400 mt-1">One Vanderbilt Avenue</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-y-12">
+                        <div>
+                            <div class="uppercase text-xs font-mono tracking-widest text-zinc-500 mb-2">EMAIL</div>
+                            <a href="mailto:hello@ireanalytics.com" class="text-xl hover:text-blue-400 transition-colors">hello@ireanalytics.com</a>
+                        </div>
+                        <div>
+                            <div class="uppercase text-xs font-mono tracking-widest text-zinc-500 mb-2">PHONE</div>
+                            <a href="tel:+12125550123" class="text-xl hover:text-blue-400 transition-colors">+1 (212) 555-0123</a>
+                        </div>
+                    </div>
+                    
+                    <!-- SOCIAL -->
+                    <div>
+                        <div class="uppercase text-xs font-mono tracking-widest text-zinc-500 mb-6">FOLLOW US</div>
+                        <div class="flex gap-8 text-3xl">
+                            <a href="#" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="#" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="#" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-12 border-t border-white/10 text-xs text-zinc-400 font-mono">
+                        © 2026 IRE Analytics LLC.<br>
+                        All rights reserved. Privacy • Terms
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl logo-font">I</span>
+                    </div>
+                    <span class="text-3xl font-bold logo-font tracking-tighter">IRE</span>
+                </div>
+                
+                <div class="flex flex-wrap gap-x-10 gap-y-4 text-sm text-zinc-400">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Use</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Press</a>
+                </div>
+                
+                <div class="text-zinc-500 text-xs font-mono">v.24.02 • BUILT IN NEW YORK</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let swiper;
+        function initSwiper() {
+            swiper = new Swiper('.hero-swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 5500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                speed: 1200,
+            });
+        }
+        
+        function smoothScrollTo(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const navHeight = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - navHeight;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-button').querySelector('i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
+            }
+        }
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+                SENDING...
+            `;
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = `
+                    <i class="fa-solid fa-check mr-2"></i>
+                    REQUEST SENT!
+                `;
+                btn.classList.add('!bg-emerald-500', '!text-white');
+                
+                setTimeout(() => {
+                    document.getElementById('contact-form').reset();
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.classList.remove('!bg-emerald-500', '!text-white');
+                }, 2200);
+            }, 1600);
+        }
+        
+        function animateStats() {
+            const clientsEl = document.getElementById('clients');
+            let count = 180;
+            const target = 247;
+            const increment = Math.ceil((target - count) / 40);
+            
+            const interval = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(interval);
+                }
+                clientsEl.textContent = count;
+            }, 30);
+        }
+        
+        window.onload = function() {
+            initSwiper();
+            animateStats();
+            
+            document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
+            
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    const icon = document.getElementById('mobile-menu-button').querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-xmark');
+                }
+            });
+            
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                section.style.opacity = '0.6';
+                section.style.transition = 'opacity 0.8s ease';
+                observer.observe(section);
+            });
+        };
+    </script>
+</body>
+</html>
